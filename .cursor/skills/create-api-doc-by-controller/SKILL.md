@@ -34,11 +34,13 @@ For each controller: identify endpoints (routes, methods, request/response types
 
 ## Output
 
-- Write each file as `API_[ControllerName].md` in the agreed docs folder (e.g. `docs/` or `docs/APIs/`). If the project already has a docs location, use it; otherwise use `docs/` or ask once where to put the files.
+- Write each file as `API_[ControllerName].md` in **`docs/APIs/`** (relative to project root). Create the `docs/APIs/` directory if it does not exist.
+- Do not use `docs/` or another path unless the user explicitly requests a different location.
 - Optionally print a one-line summary per file (path and controller name).
 
 ## Constraints
 
 - Do **not** invent headings that break the rule: chapters must be `# [ROMAN]. [UPPERCASE TITLE]`; sub-sections must be `## N.`, `### N.M.`, etc.
 - Prefer inferring types from code (TypeScript/C#/etc.). If something is unclear, note it in the doc (e.g. "Optional; type inferred from X").
+- **Output path**: All API docs must be saved to **`docs/APIs/`**. Create the folder if missing. Use a different path only if the user explicitly asks for it.
 - **Related**: Command `.cursor/commands/create-api-doc-by-controller.md`.
