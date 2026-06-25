@@ -1,0 +1,16 @@
+# Paste into your project root `.cursorrules` (or merge with existing content).
+# Helps IDE Source Control "Generate commit message" (sparkle) when project Rules are ignored.
+# Keep local only: add `.cursorrules` to `.git/info/exclude` if you do not want to commit it.
+
+When auto-generating a Git commit message for this repository (Source Control sparkle button or any commit suggestion):
+
+- Format: single line only — `[TYPE]: [Message]`
+- TYPE must be one of: feat, fix, refactor, modifier, merge
+- feat = new feature; fix = bug fix; refactor = no behavior change; modifier = docs/config/style/small tweaks; merge = merge commit only
+- Output ONLY the commit message line — no markdown, no code fence, no explanation
+- Base the message on staged changes only
+
+Examples:
+feat: Add GET /api/users endpoint and tests
+fix: Prevent null reference in PaymentService.Process
+modifier: Update README and env example

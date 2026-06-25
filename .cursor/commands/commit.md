@@ -2,7 +2,11 @@
 
 ## Description
 
-Asks the agent to inspect the current git state (e.g. `git status`, `git diff`, staged changes) and produce a single, well-formed commit message. The message must be placed inside a **code block** in the response so you can copy it easily. Format: `[TYPE]: [Message]`, where TYPE is one of: `feat`, `fix`, `refactor`, `modifier`, `merge`.
+Asks the agent to inspect the current git state (e.g. `git status`, `git diff`, staged changes) and produce a single, well-formed commit message. Format: `[TYPE]: [Message]`, where TYPE is one of: `feat`, `fix`, `refactor`, `modifier`, `merge`.
+
+**Always-on rule:** `.cursor/rules/commit-message.mdc` (`alwaysApply: true`) applies this format in Chat, Agent, and IDE Source Control **Generate commit message**. For SCM, if the sparkle button still ignores Rules, copy `templates/cursorrules-commit-snippet.txt` into the project root `.cursorrules` (see `docs/SCM-COMMIT-MESSAGE.md`).
+
+In Chat, the message is placed inside a **code block** for easy copy. In SCM, output is the plain message line only.
 
 ## How to use
 
@@ -69,4 +73,6 @@ modifier: Update README and env example
 
 ## Related
 
-- **Skill**: `.cursor/skills/commit/SKILL.md` — commit message format and workflow. The agent only proposes the message; the user runs `git add` and `git commit`.
+- **Rule**: `.cursor/rules/commit-message.mdc` — always applied (`alwaysApply: true`)
+- **Skill**: `.cursor/skills/commit/SKILL.md` — workflow and output by context
+- **SCM workaround**: `templates/cursorrules-commit-snippet.txt`, `docs/SCM-COMMIT-MESSAGE.md`

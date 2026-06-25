@@ -129,4 +129,6 @@ If you don't have the Task tool available:
 7. [ ] Summarize the results to the user. IMPORTANT: Make sure to let them know if they want to undo the migration, to ask you to.
 8. [ ] If the user asks you to undo the migration, do the opposite of the above steps to restore the original files.
 
-**Related**: Command `.cursor/commands/migrate-to-skills.md` is the entry point; invoke this skill when the user runs `/migrate-to-skills`.
+## Related
+
+- **Command**: `.cursor/commands/migrate-to-skills.md` — entry point; invoke this skill when the user runs `/migrate-to-skills`

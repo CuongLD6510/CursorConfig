@@ -1,6 +1,6 @@
 ---
 name: create-config-for-this-project
-description: Creates project-specific Cursor config by indexing the codebase and generating default rules (project, sources-base, architecture-patterns) plus any requested commands, rules, skills, or subagents. Use when the user invokes /create-config-for-this-project or asks to generate Cài đặt riêng for the current project.
+description: Creates project-specific Cursor config by indexing the codebase and generating default rules (project, sources-base, architecture-patterns) plus any requested commands, rules, skills, or subagents. Use when the user invokes /create-config-for-this-project or asks to generate project-specific config (Cài đặt riêng).
 disable-model-invocation: true
 ---
 # Create Config for This Project
@@ -23,4 +23,9 @@ Generate project-specific config under the current project's `.cursor/`. Do not 
 - Creates or overwrites files under `.cursor/` in the **current project** only.
 - "Cài đặt chung" (shared commands, rules, skills, subagents) should already be available. This skill adds **project-specific** config on top.
 - If the project is empty or very small, the default rules may be generic; the user can refine them later.
-- **Related**: Command `.cursor/commands/create-config-for-this-project.md`; rules authoring-guidelines.mdc, global-rules.mdc; skills create-rule, create-skill, create-subagent.
+
+## Related
+
+- **Command**: `.cursor/commands/create-config-for-this-project.md`
+- **Rules**: `.cursor/rules/authoring-guidelines.mdc`, `.cursor/rules/global-rules.mdc`
+- **Skills**: `.cursor/skills/create-rule/SKILL.md`, `.cursor/skills/create-skill/SKILL.md`, `.cursor/skills/create-subagent/SKILL.md`

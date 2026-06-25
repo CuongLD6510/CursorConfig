@@ -23,4 +23,7 @@ Run the project build. If there are errors, try to fix them automatically. Then 
 - When fixing, avoid changing behavior unrelated to the build error; keep edits minimal.
 - If the build requires environment variables, a specific OS, or tools not present, say so clearly in the summary instead of guessing.
 - **Summary language**: Use the same language as the user (e.g. Vietnamese) for the final status and fix description when appropriate.
-- **Related**: Command `.cursor/commands/build.md`.
+
+## Related
+
+- **Command**: `.cursor/commands/build.md`

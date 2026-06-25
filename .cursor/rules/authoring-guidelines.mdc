@@ -17,8 +17,12 @@ Use these guidelines when creating or editing commands, rules, skills, and subag
 | Skill     | `.cursor/skills/{skill-name}/SKILL.md` | YAML frontmatter (name, description) + markdown body |
 | Subagent  | `.cursor/agents/{subagent-name}.md` | YAML frontmatter (name, description) + system prompt body |
 
-- Use **English** for all content in a professional, consistent tone.
 - Rule files must be **.mdc** (not .md) so Cursor recognizes frontmatter and globs.
+
+## Language
+
+- **English**: Meta/authoring artifacts — command structure, `global-rules`, `authoring-guidelines`, create-rule/create-skill/create-subagent skills; skill and subagent `description` frontmatter (third person, with trigger terms).
+- **Vietnamese**: Business-workflow content — user-facing responses for `/task`, `/db_diagram`, `/flowchart`, `/create-user-guide`; workflow rule bodies (`db-diagram.mdc`, `flowchart.mdc`); workflow skill instructions and subagent output templates for domain workflows.
 
 ## Command Structure
 
@@ -38,7 +42,7 @@ Additional sections (e.g. Output format) are allowed.
 
 ## Rule Structure (create-rule)
 
-- **Frontmatter**: `description` (required); optionally `globs` and `alwaysApply`.
+- **Frontmatter**: `description` (required, prefer **English** for rule picker); optionally `globs` and `alwaysApply`.
 - **Body**: Concise, actionable content; one main concern per rule when possible.
 - Keep rules under ~50 lines per main topic; use examples where helpful.
 - Follow the conventions in the create-rule skill (e.g. under 500 lines total, concrete examples).
@@ -46,14 +50,17 @@ Additional sections (e.g. Output format) are allowed.
 ## Skill Structure (create-skill)
 
 - **Frontmatter**: `name` (lowercase, hyphens, max 64 chars), `description` (what it does and when to use it).
+- **`disable-model-invocation`**:
+  - `true` — slash-command workflow skills (`task`, `db-diagram`, …) and meta/authoring skills (`create-rule`, `create-skill`, `create-subagent`, `update-cursor-settings`, `migrate-to-skills`); invoked only via `/command` or explicit user request.
+  - omit or `false` — skills that should auto-apply from context (e.g. `commit` for commit message generation).
 - **Body**: Instructions, examples, workflows; keep SKILL.md under 500 lines; use progressive disclosure (e.g. reference.md) for long content.
-- Description should be in third person and include both what the skill does and when the agent should apply it.
+- **Description**: Third person, **English**; include both what the skill does and when the agent should apply it (trigger terms). Vietnamese trigger terms (e.g. HDSD, quy trình nghiệp vụ) are allowed in the WHEN clause.
 
 ## Subagent Structure (create-subagent)
 
 - **Frontmatter**: `name`, `description` (when to delegate to this subagent; be specific).
-- **Body**: System prompt — what the subagent does when invoked, steps, output format, and constraints.
-- Include trigger terms and "use proactively" in the description if the agent should suggest this subagent automatically.
+- **Description**: Third person, **English**; include trigger terms and "use proactively" if the agent should suggest this subagent automatically.
+- **Body**: System prompt — what the subagent does when invoked, steps, output format, and constraints. Body may use Vietnamese for domain workflow output templates.
 
 ## Cross-References
 
@@ -68,10 +75,15 @@ Additional sections (e.g. Output format) are allowed.
 | `/task` | `skills/task/SKILL.md` | global-rules, project rules; **planner** subagent for Plan mode |
 | `/question` | `skills/question/SKILL.md` | global-rules (communication) |
 | `/build` | `skills/build/SKILL.md` | — |
-| `/commit` | `skills/commit/SKILL.md` | — |
+| `/commit` | `skills/commit/SKILL.md` | `commit-message.mdc` (`alwaysApply: true`); SCM also see `templates/cursorrules-commit-snippet.txt` |
+| `/db_diagram` | `skills/db-diagram/SKILL.md` | `db-diagram.mdc`; template `skills/db-diagram/document-template.md`; **db-business-analyst**, **db-source-explorer**, **db-diagram-planner**, **db-diagram-writer** |
+| `/flowchart` | `skills/flowchart/SKILL.md` | `flowchart.mdc`; **flowchart-explorer** subagent |
 | `/create-config-for-this-project` | `skills/create-config-for-this-project/SKILL.md` | authoring-guidelines, global-rules; create-rule, create-skill, create-subagent skills |
 | `/create-api-doc-by-controller` | `skills/create-api-doc-by-controller/SKILL.md` | — |
+| `/create-user-guide` | `skills/create-user-guide/SKILL.md` | `skills/create-user-guide/template.md` |
 | `/migrate-to-skills` | `skills/migrate-to-skills/SKILL.md` | — |
 | `/update-cursor-settings` | `skills/update-cursor-settings/SKILL.md` | — |
+
+**Meta skills** (`create-rule`, `create-skill`, `create-subagent`, `update-cursor-settings`, `migrate-to-skills`): set `disable-model-invocation: true`. **Auto-apply skills** (e.g. `commit`): omit the flag so the agent can discover them from context.
 
 Each command file should include a **Related** section linking to its skill (and to rules or subagents when relevant). Project-specific rules generated by `/create-config-for-this-project` extend or reference **global-rules**, not replace them.

@@ -1,0 +1,49 @@
+---
+description: Structure and conventions for business db diagram documentation in docs/db_diagrams/
+globs: docs/db_diagrams/**/*.md
+alwaysApply: false
+---
+
+# DB Diagram Documentation
+
+Áp dụng khi thực hiện `/db_diagram` hoặc chỉnh sửa file trong `docs/db_diagrams/`.
+
+## Extends
+
+- **Template chuẩn (portable):** `.cursor/skills/db-diagram/document-template.md`
+- **Hướng dẫn authoring:** `.cursor/skills/db-diagram/reference.md`
+- Project layout (nếu có): `sources-base.mdc`, `project.mdc`
+
+## Vị trí và đặt tên
+
+- **Thư mục output:** `docs/db_diagrams/` trong project đang làm việc
+- **Tên file:** `db_diagram_{module_slug}.md` — snake_case; mã loại giữ UPPER_SNAKE nếu có
+
+## Cấu trúc tài liệu (bắt buộc)
+
+Theo `document-template.md`:
+
+1. `## 1. Mục tiêu tổng quan`
+2. `# 1A. Ma trận ... ↔ bảng` (tra cứu nhanh trước chi tiết schema)
+3. `# 2..N. Nhóm bảng` — mỗi bảng: cột chính, cách dùng, FK
+4. `# N. Luồng dữ liệu chính` — bước đánh số
+5. `# N+1. Tổng hợp danh sách bảng`
+6. `# N+2. Sơ đồ quan hệ rút gọn` (text tree)
+7. `# N+3. Script SQL (chạy một lần)` — một script idempotent: CREATE + ALTER + seed tùy chọn
+
+## Convention nội dung
+
+- Tiếng Việt; giữ nguyên tên kỹ thuật từ codebase (bảng, cột, API, enum).
+- Giai đoạn: `Template` | `Phiếu` | `Master` | `Kết quả` | `Dùng chung`.
+- Không bịa schema — đánh dấu `*(cần xác nhận)*` hoặc `*(chưa triển khai)*` khi thiếu bằng chứng.
+- Module lớn: tài liệu tổng + tài liệu con, liên kết chéo trong §1A.3.
+- **Script SQL (mục cuối):** một khối duy nhất, idempotent; khớp schema §2+.
+
+## Liên kết workflow
+
+| Thành phần | Path |
+| ---------- | ---- |
+| Command | `.cursor/commands/db_diagram.md` |
+| Skill | `.cursor/skills/db-diagram/SKILL.md` |
+| Template | `.cursor/skills/db-diagram/document-template.md` |
+| Subagents | `db-business-analyst`, `db-source-explorer`, `db-diagram-planner`, `db-diagram-writer` |

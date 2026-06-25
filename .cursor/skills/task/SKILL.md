@@ -41,4 +41,9 @@ Consider the task done only when:
 - Do not stop with a half-done feature; either complete it or switch to Plan mode and agree on scope.
 - If the brief is too vague, ask one or two focused questions or propose a short plan instead of guessing.
 - Project-specific rules override or extend global rules for that project.
-- **Related**: Command `.cursor/commands/task.md`; subagent for planning `.cursor/agents/planner.md`.
+
+## Related
+
+- **Command**: `.cursor/commands/task.md` — user invokes `/task [brief desc]`
+- **Rules**: `.cursor/rules/global-rules.mdc`, project rules in `.cursor/rules/`
+- **Subagent (Plan mode)**: `.cursor/agents/planner.md` — use this structure for plans and clarifying questions

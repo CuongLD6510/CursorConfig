@@ -1,6 +1,7 @@
 ---
 name: update-cursor-settings
-description: Modify Cursor/VSCode user settings in settings.json. Use when you want to change editor settings, preferences, configuration, themes, font size, tab size, format on save, auto save, keybindings, or any settings.json values.
+description: Modifies Cursor/VSCode user settings in settings.json. Use when the user wants to change editor settings, preferences, themes, font size, tab size, format on save, auto save, keybindings, or other settings.json values.
+disable-model-invocation: true
 ---
 # Updating Cursor Settings
 
@@ -115,4 +116,6 @@ If user says "use dark theme" or "change my theme":
 4. Write the updated JSON back to the file
 5. Inform the user the setting has been changed and whether a reload is needed
 
-**Related**: Command `.cursor/commands/update-cursor-settings.md`; user invokes `/update-cursor-settings [request]` to apply this workflow.
+## Related
+
+- **Command**: `.cursor/commands/update-cursor-settings.md` — user invokes `/update-cursor-settings [request]`

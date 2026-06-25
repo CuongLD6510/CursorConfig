@@ -43,4 +43,7 @@ For each controller: identify endpoints (routes, methods, request/response types
 - Do **not** invent headings that break the rule: chapters must be `# [ROMAN]. [UPPERCASE TITLE]`; sub-sections must be `## N.`, `### N.M.`, etc.
 - Prefer inferring types from code (TypeScript/C#/etc.). If something is unclear, note it in the doc (e.g. "Optional; type inferred from X").
 - **Output path**: All API docs must be saved to **`docs/APIs/`**. Create the folder if missing. Use a different path only if the user explicitly asks for it.
-- **Related**: Command `.cursor/commands/create-api-doc-by-controller.md`.
+
+## Related
+
+- **Command**: `.cursor/commands/create-api-doc-by-controller.md`

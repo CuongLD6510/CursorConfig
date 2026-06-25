@@ -13,8 +13,12 @@ This document is an extended reference for creating and editing **commands**, **
 | **Skill**   | `.cursor/skills/{skill-name}/SKILL.md`| YAML frontmatter (`name`, `description`) + Markdown body. |
 | **Subagent**| `.cursor/agents/{subagent-name}.md`    | YAML frontmatter (`name`, `description`) + body = system prompt. |
 
-- Use **English** for all content, in a professional and consistent tone.
 - Use **lowercase with hyphens** for file and folder names (e.g. `create-config-for-this-project.md`, `code-reviewer.md`).
+
+### Language policy
+
+- **English**: Meta/authoring artifacts — command structure, `global-rules`, `authoring-guidelines`, create-rule/create-skill/create-subagent skills; skill and subagent `description` frontmatter (third person, with trigger terms).
+- **Vietnamese**: Business-workflow content — user-facing responses for `/task`, `/db_diagram`, `/flowchart`, `/create-user-guide`; workflow rule bodies (`db-diagram.mdc`, `flowchart.mdc`); workflow skill instructions and subagent output templates for domain workflows.
 
 ---
 
@@ -37,7 +41,7 @@ Additional sections (e.g. **Output format**, **Related commands**) are allowed. 
 ## 3. Rule structure (create-rule)
 
 - **Frontmatter** (YAML at top of `.mdc`):
-  - `description` (required): Short line for the rule picker.
+  - `description` (required): Short line for the rule picker — prefer **English** for workflow rules; body may be Vietnamese.
   - `globs` (optional): File pattern, e.g. `**/*.ts`. Omit if the rule applies regardless of file.
   - `alwaysApply` (optional): `true` if the rule should apply in every session when loaded.
 - **Body**: Concise, actionable content. One main concern per rule when possible. Prefer under ~50 lines per main topic. Include concrete examples (e.g. good vs bad code or behavior).
@@ -49,7 +53,8 @@ Additional sections (e.g. **Output format**, **Related commands**) are allowed. 
 
 - **Frontmatter**:
   - `name`: Lowercase, hyphens, max 64 characters (e.g. `create-rule`, `migrate-to-skills`).
-  - `description`: One or two sentences in **third person** describing what the skill does and **when** the agent should apply it (trigger scenarios). This is used for skill discovery.
+  - `description`: One or two sentences in **third person**, **English**, describing what the skill does and **when** the agent should apply it (trigger scenarios). Vietnamese trigger terms (e.g. HDSD) are allowed in the WHEN clause.
+  - `disable-model-invocation`: `true` for slash-command workflows and meta/authoring skills; omit for skills that should auto-apply (e.g. `commit`).
 - **Body**:
   - Instructions, workflows, and examples. Keep `SKILL.md` under 500 lines.
   - Use progressive disclosure: put long or detailed content in separate files (e.g. `reference.md`, `examples.md`) and link from `SKILL.md`.
@@ -61,7 +66,7 @@ Additional sections (e.g. **Output format**, **Related commands**) are allowed. 
 
 - **Frontmatter**:
   - `name`: Unique identifier, lowercase letters and hyphens.
-  - `description`: When to delegate to this subagent. Be specific; include trigger terms. Use "use proactively" if the agent should suggest this subagent automatically.
+  - `description`: Third person, **English**; when to delegate. Include trigger terms and "use proactively" if the agent should suggest this subagent automatically.
 - **Body**: The system prompt. Define:
   - What the subagent does when invoked.
   - Steps or workflow.

@@ -22,4 +22,8 @@ Answer the user's question only. Do not edit files, run state-changing commands,
 - This is strictly **read-only**: no file edits, no builds, no refactors. For implementation, the user should use `/task` or another command.
 - If the question is ambiguous, ask one short clarifying question before answering.
 - Code in the answer must be syntactically valid and copyable.
-- **Related**: Command `.cursor/commands/question.md`. Response language should follow the user (see global-rules).
+
+## Related
+
+- **Command**: `.cursor/commands/question.md`
+- **Rules**: `.cursor/rules/global-rules.mdc` — response language follows the user

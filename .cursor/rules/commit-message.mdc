@@ -1,0 +1,58 @@
+---
+description: Mandatory git commit message format for /commit, Chat, and IDE Source Control "Generate commit message". Single line [TYPE]: [Message]. TYPE is feat, fix, refactor, modifier, or merge.
+alwaysApply: true
+---
+
+# Commit Message Format
+
+Apply **whenever** you generate a git commit message — including `/commit`, Chat, Agent, and **IDE Source Control** (sparkle / Generate commit message).
+
+## Format (required)
+
+**Single line only:**
+
+```text
+[TYPE]: [Message]
+```
+
+| TYPE | Use when |
+|------|----------|
+| `feat` | New feature or capability |
+| `fix` | Bug fix |
+| `refactor` | Restructure without behavior change |
+| `modifier` | Docs, config, style, small incremental tweaks |
+| `merge` | Merge commit only |
+
+## Steps
+
+1. Inspect staged changes (`git diff --cached`) or the diff provided by the IDE.
+2. Summarize **only what will be committed** in one clear sentence.
+3. Pick TYPE from the table above.
+4. Write: `TYPE: Message` — imperative or neutral; no trailing period required.
+
+## Examples
+
+```text
+feat: Add GET /api/users endpoint and tests
+fix: Prevent null reference in PaymentService.Process
+refactor: Extract auth logic into AuthService
+modifier: Update Cursor config bundle README and commit rules
+```
+
+## Output by context
+
+| Context | Output |
+|---------|--------|
+| **Source Control / SCM** (commit input box) | **Only** the commit message line — no markdown, no code fence, no explanation |
+| **Chat / `/commit`** | Message inside a markdown code block for easy copy |
+
+## Do not
+
+- Use multi-line bodies, Conventional Commits scopes (`feat(api):`), or types outside the table unless the user explicitly overrides.
+- Invent a message when there are no staged changes.
+- Run `git add` or `git commit` unless the user explicitly asks.
+
+## Related
+
+- **Command**: `.cursor/commands/commit.md`
+- **Skill**: `.cursor/skills/commit/SKILL.md`

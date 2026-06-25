@@ -45,5 +45,8 @@ Agent: For each migrated skill, recreates the original `.mdc` or `.md` from the 
 
 - **Do not modify** the body content when converting—copy verbatim. No typo fixes, no reformatting.
 - Rules that have `globs` or `alwaysApply: true` are **not** migrated by the standard workflow; they remain as rules. Only "Applied intelligently" rules (description only) are converted.
-- The migrate-to-skills **skill** (in Cursor's skills or in this bundle) is the source of truth for the exact conversion steps and conditions; this command is the entry point that invokes that workflow.
-- **Related**: Apply the skill `.cursor/skills/migrate-to-skills/SKILL.md` from this bundle for the full workflow.
+- The migrate-to-skills **skill** in this bundle is the source of truth for conversion steps; this command is the entry point.
+
+## Related
+
+- **Skill**: `.cursor/skills/migrate-to-skills/SKILL.md` — full workflow and conversion rules

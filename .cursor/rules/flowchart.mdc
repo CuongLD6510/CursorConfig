@@ -1,0 +1,49 @@
+---
+description: Structure and conventions for business-process Mermaid flowcharts in docs/{module}/flowchart.md
+globs: docs/**/flowchart.md
+alwaysApply: false
+---
+
+# Flowchart Documentation
+
+Áp dụng khi thực hiện `/flowchart` hoặc chỉnh sửa file `docs/{module}/flowchart.md`.
+
+## Extends
+
+- **Skill (workflow):** `.cursor/skills/flowchart/SKILL.md`
+- Project layout (nếu có): `sources-base.mdc`, `project.mdc`
+
+## Vị trí và đặt tên
+
+- **Thư mục output:** `docs/{module-name}/` trong project đang làm việc (`module-name` kebab-case)
+- **Tên file:** `flowchart.md` (cố định trong thư mục module)
+
+## Cấu trúc tài liệu (bắt buộc)
+
+1. `# {Module Title} — Sơ đồ quy trình nghiệp vụ` — giới thiệu 1–2 câu
+2. `## N. {Tiêu đề ngắn}` — một flow mỗi section; mô tả 1 dòng khi cần
+3. Khối Mermaid `flowchart LR` cho từng flow
+4. `## Tham chiếu` (tùy chọn) — link tới tài liệu liên quan trong cùng module
+
+## Convention Mermaid
+
+- Luôn `flowchart LR` (trái → phải)
+- Bắt đầu: `([Bắt đầu])`; kết thúc: `([Kết thúc])` — mọi nhánh phải tới **Kết thúc**
+- Hành động: `[Mô tả ngắn]` — động từ, tiếng Việt, hướng người dùng
+- Quyết định: `{Câu hỏi?}` — nhánh có nhãn `|Có|`, `|Không|` hoặc lựa chọn rõ
+- **Cấm** trong nhãn: tên bảng (`TBL_*`), tên API (`fn*`), tên cột/field kỹ thuật
+
+## Convention nội dung
+
+- Tiếng Việt cho tiêu đề và bước (trừ khi user yêu cầu English)
+- Mức độ cao: 4–10 node mỗi flow; không chuỗi validation sâu
+- Gộp CRUD lặp thành một flow "Quản lý danh sách" khi các màn hình cùng pattern
+- Cập nhật file có sẵn: giữ section không liên quan; chỉ sửa flow thay đổi
+
+## Liên kết workflow
+
+| Thành phần | Path |
+| ---------- | ---- |
+| Command | `.cursor/commands/flowchart.md` |
+| Skill | `.cursor/skills/flowchart/SKILL.md` |
+| Subagent | `.cursor/agents/flowchart-explorer.md` |
